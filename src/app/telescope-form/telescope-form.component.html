@@ -1,0 +1,26 @@
+<h1>Hubble Images</h1>
+
+<form>
+  <div class="form-group">
+    <label for="collection">Collection</label>
+    <select #hubbleCollection>
+      <option value="news">News</option>
+      <option value="spacecraft">Spacecraft</option>
+      <option value="printshop">Printshop</option>
+  </div>
+  <div class="form-group">
+    <label for="Mission">Mission</label>
+    <select #hubbleMission>
+      <option value="hubble">Hubble</option>
+      <option value="james_webb">James Webb</option>
+    </select>
+  </div>
+  <button (click)="getHubblePhotos(hubbleCollection.value)">Get Images</button>
+</form>
+
+<div *ngIf="photos">
+  <app-images-list [childPhotos]="photos"></app-images-list>
+</div>
+<div *ngIf="photos===null">
+  <h3>There were no photos taken by {{hubbleMission.value}} for {{hubbleCollection.value}}.</h3>
+</div>
